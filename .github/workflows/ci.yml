@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - master
+    - test-CI-with-Atom-Dev
   pull_request:
     types:
     - opened
@@ -67,9 +67,8 @@ jobs:
     runs-on: macos-10.14
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM_CHANNEL: nightly
-      ATOM: /tmp/atom/Atom\ Nightly.app/Contents/Resources/app/atom.sh
-      APM: /tmp/atom/Atom\ Nightly.app/Contents/Resources/app/apm/bin/apm
+      ATOM: /tmp/atom/Atom\ Dev.app/Contents/Resources/app/atom.sh
+      APM: /tmp/atom/Atom\ Dev.app/Contents/Resources/app/apm/bin/apm
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
@@ -77,10 +76,11 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L https://atom.io/download/mac?channel=${ATOM_CHANNEL} \
+        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
-        sudo unzip -q /tmp/atom.zip -d /tmp/atom
+        sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
+        sudo unzip -q /tmp/atom_intermediate/atom-mac.zip/atom-mac.zip -d /tmp/atom
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
