@@ -79,7 +79,8 @@ jobs:
         curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/921/artifacts?artifactName=atom-mac.zip&api-version=5.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
-        sudo unzip -q /tmp/atom.zip -d /tmp/atom
+        sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
+        sudo unzip -q /tmp/atom_intermediate/atom-mac.zip/atom-mac.zip -d /tmp/atom
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
