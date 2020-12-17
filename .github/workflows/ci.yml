@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - master
+    - run-CI-on-Catalina
   pull_request:
     types:
     - opened
@@ -64,7 +64,7 @@ jobs:
 
   macos-tests:
     name: macos tests
-    runs-on: macos-10.14
+    runs-on: macos-10.15
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
       ATOM_CHANNEL: nightly
