@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+pr: none
+
+variables: # pipeline-level
+  ATOM_GITHUB_BABEL_ENV: coverage
+  ATOM_CHANNEL: nightly
+  ATOM: /tmp/atom/Atom\ Nightly.app/Contents/Resources/app/atom.sh
+  APM: /tmp/atom/Atom\ Nightly.app/Contents/Resources/app/apm/bin/apm
+  MOCHA_TIMEOUT: 60000
+  UNTIL_TIMEOUT: 30000
+
+pool:
+  vmImage: 'macos-10.14'
+
+steps:
+- script: |
+    curl -s -L https://atom.io/download/mac?channel=${ATOM_CHANNEL} \
+      -H 'Accept: application/octet-stream' \
+      -o /tmp/atom.zip
+    sudo unzip -q /tmp/atom.zip -d /tmp/atom
+  displayName: 'install Atom'
+- script: |
+    sh -c "${APM} ci"
+  displayName: 'install dependencies'
+- script: |
+    git config --global user.name Hubot
+    git config --global user.email hubot@github.com
+  displayName: 'configure git'
+- script: |
+    sh -c "${ATOM} --test test/"
+  displayName: 'run tests'
