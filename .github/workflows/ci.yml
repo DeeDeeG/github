@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - test-CI-with-Atom-Dev
+    - test-electron-9
   pull_request:
     types:
     - opened
@@ -76,7 +76,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/905/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.visualstudio.com/9e67709c-1fe5-47f2-8cf6-4902878a11f5/_apis/build/builds/93042/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
