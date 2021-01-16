@@ -40,9 +40,9 @@ jobs:
       shell: bash
       run: |
         echo "atom --version outputs:"
-        atom --version
+        "${ATOM}" --version
         echo "apm --version outputs:"
-        apm --version
+        "${APM}" --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
@@ -92,9 +92,9 @@ jobs:
       shell: bash
       run: |
         echo "atom --version outputs:"
-        atom --version
+        "${ATOM}" --version
         echo "apm --version outputs:"
-        apm --version
+        "${APM}" --version
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
@@ -149,9 +149,9 @@ jobs:
       shell: bash
       run: |
         echo "atom --version outputs:"
-        atom --version
+        "${ATOM}" --version
         echo "apm --version outputs:"
-        apm --version
+        "${APM}" --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
@@ -189,9 +189,9 @@ jobs:
       shell: bash
       run: |
         echo "atom --version outputs:"
-        atom --version
+        "${ATOM}" --version
         echo "apm --version outputs:"
-        apm --version
+        "${APM}" --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
