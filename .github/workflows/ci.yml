@@ -91,10 +91,10 @@ jobs:
     - name: Print versions
       shell: bash
       run: |
-        echo "atom --version outputs:"
-        "${ATOM}" --version
         echo "apm --version outputs:"
         "${APM}" --version
+        echo "atom --version outputs:"
+        "${ATOM}" --version
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
