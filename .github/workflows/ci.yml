@@ -36,6 +36,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -yyq libgconf-2-4 build-essential git libsecret-1-dev gvfs-bin
         dpkg-deb -x /tmp/atom-amd64.deb /tmp/atom
+    - name: Print versions
+      shell: bash
+      run: |
+        echo "atom --version outputs:"
+        atom --version
+        echo "apm --version outputs:"
+        apm --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
@@ -81,6 +88,13 @@ jobs:
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom
+    - name: Print versions
+      shell: bash
+      run: |
+        echo "atom --version outputs:"
+        atom --version
+        echo "apm --version outputs:"
+        apm --version
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
@@ -131,6 +145,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -yyq libgconf-2-4 build-essential git libsecret-1-dev gvfs-bin
         dpkg-deb -x /tmp/atom-amd64.deb /tmp/atom
+    - name: Print versions
+      shell: bash
+      run: |
+        echo "atom --version outputs:"
+        atom --version
+        echo "apm --version outputs:"
+        apm --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
@@ -164,6 +185,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -yyq libgconf-2-4 build-essential git libsecret-1-dev gvfs-bin
         dpkg-deb -x /tmp/atom-amd64.deb /tmp/atom
+    - name: Print versions
+      shell: bash
+      run: |
+        echo "atom --version outputs:"
+        atom --version
+        echo "apm --version outputs:"
+        apm --version
     - name: install dependencies
       shell: bash
       run: ${APM} ci
