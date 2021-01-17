@@ -91,6 +91,7 @@ jobs:
     - name: Print versions
       shell: bash
       run: |
+        sleep 20
         echo "apm --version outputs:"
         "${APM}" --version
         echo "atom --version outputs:"
