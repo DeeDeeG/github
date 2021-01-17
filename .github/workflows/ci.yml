@@ -91,7 +91,12 @@ jobs:
     - name: Print versions
       shell: bash
       run: |
-        sleep 20
+        sleep 5
+        ls -lah /tmp/atom
+        echo
+        echo "recursive ls:"
+        echo
+        ls -lahR /tmp/atom
         echo "apm --version outputs:"
         "${APM}" --version
         echo "atom --version outputs:"
