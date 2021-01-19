@@ -19,7 +19,7 @@ describe('integration: file patches', function() {
 
   beforeEach(function() {
     // These tests take a little longer because they rely on real filesystem events and git operations.
-    until.setDefaultTimeout(9000);
+    until.setDefaultTimeout(parseInt(process.env.UNTIL_TIMEOUT || '9000', 10));
   });
 
   afterEach(async function() {
