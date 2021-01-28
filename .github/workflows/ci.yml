@@ -14,7 +14,7 @@ jobs:
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
       MOCHA_TIMEOUT: 60000
-      UNTIL_TIMEOUT: 30000
+      UNTIL_TIMEOUT: 480000
     steps:
     - uses: actions/checkout@v1
     - name: install Atom
