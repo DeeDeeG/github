@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
-      MOCHA_TIMEOUT: 60000
+      MOCHA_TIMEOUT: 481000
       UNTIL_TIMEOUT: 480000
     steps:
     - uses: actions/checkout@v1
