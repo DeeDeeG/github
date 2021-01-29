@@ -36,6 +36,11 @@ jobs:
         git config --global user.name Hubot
         git config --global user.email hubot@github.com
 
+    - name: Print babel info
+      shell: bash
+      run: |
+        npx envinfo --preset babel
+
     - name: Run the tests
       if: ${{ !contains(matrix.os, 'windows') }}
       run: atom --test test
