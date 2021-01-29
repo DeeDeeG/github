@@ -12,6 +12,7 @@ jobs:
         os: [ubuntu-18.04, macos-10.14, windows-latest]
         channel: [beta, nightly]
       fail-fast: false
+      max-parallel: 2
     runs-on: ${{ matrix.os }}
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
