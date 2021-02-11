@@ -15,9 +15,8 @@ jobs:
     env:
       DISPLAY: ":99"
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM_CHANNEL: nightly
-      ATOM: /tmp/atom/usr/bin/atom-nightly
-      APM: /tmp/atom/usr/share/atom-nightly/resources/app/apm/bin/apm
+      ATOM: /tmp/atom/usr/bin/atom-dev
+      APM: /tmp/atom/usr/share/atom-dev/resources/app/apm/bin/apm
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
@@ -25,9 +24,10 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L https://atom.io/download/deb?channel=${ATOM_CHANNEL} \
+        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
-          -o /tmp/atom-amd64.deb
+          -o /tmp/atom-amd64.deb.zip
+        unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
         /sbin/start-stop-daemon --start --quiet \
           --pidfile /tmp/custom_xvfb_99.pid \
           --make-pidfile --background \
