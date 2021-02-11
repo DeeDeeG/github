@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - test-CI-with-Atom-Dev
+    - test-with-Atom-Electron-9
   pull_request:
     types:
     - opened
