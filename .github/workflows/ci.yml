@@ -25,9 +25,12 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L https://atom.io/download/deb?channel=${ATOM_CHANNEL} \
+        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
-          -o /tmp/atom-amd64.deb
+          -o /tmp/atom-amd64.deb.zip
+        cd /tmp
+        unzip atom-amd64.deb.zip
+        cd -
         /sbin/start-stop-daemon --start --quiet \
           --pidfile /tmp/custom_xvfb_99.pid \
           --make-pidfile --background \
@@ -76,7 +79,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/905/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
