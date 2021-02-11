@@ -15,9 +15,9 @@ jobs:
     env:
       DISPLAY: ":99"
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM_CHANNEL: nightly
-      ATOM: /tmp/atom/usr/bin/atom-nightly
-      APM: /tmp/atom/usr/share/atom-nightly/resources/app/apm/bin/apm
+      ATOM_CHANNEL: dev
+      ATOM: /tmp/atom/usr/bin/atom-dev
+      APM: /tmp/atom/usr/share/atom-dev/resources/app/apm/bin/apm
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
