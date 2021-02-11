@@ -28,7 +28,7 @@ jobs:
         curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom-amd64.deb.zip
-        unzip /tmp/atom-amd64.deb.zip -d /tmp/
+        unzip /tmp/atom-amd64.deb.zip atom-amd64.deb/atom-amd64.deb -d /tmp/
         /sbin/start-stop-daemon --start --quiet \
           --pidfile /tmp/custom_xvfb_99.pid \
           --make-pidfile --background \
