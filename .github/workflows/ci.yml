@@ -37,7 +37,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -yyq libgconf-2-4 build-essential git libsecret-1-dev gvfs-bin
         dpkg-deb -x /tmp/atom-amd64.deb /tmp/atom
-        ls -R /tmp/
     - name: install dependencies
       shell: bash
       run: ${APM} ci
