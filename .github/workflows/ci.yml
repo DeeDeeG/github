@@ -76,7 +76,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/905/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
