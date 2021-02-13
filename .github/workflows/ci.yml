@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - test-with-Atom-Electron-9
+    - e9-promisification
   pull_request:
     types:
     - opened
