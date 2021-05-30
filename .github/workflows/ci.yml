@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - test-with-Atom-Electron-9
+    - Atom-1.54
   pull_request:
     types:
     - opened
@@ -15,8 +15,8 @@ jobs:
     env:
       DISPLAY: ":99"
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM: /tmp/atom/usr/bin/atom-dev
-      APM: /tmp/atom/usr/share/atom-dev/resources/app/apm/bin/apm
+      ATOM: /tmp/atom/usr/bin/atom
+      APM: /tmp/atom/usr/share/atom/resources/app/apm/bin/apm
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
@@ -24,7 +24,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1131/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom-amd64.deb.zip
         unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
@@ -67,8 +67,8 @@ jobs:
     runs-on: macos-10.14
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM: /tmp/atom/Atom\ Dev.app/Contents/Resources/app/atom.sh
-      APM: /tmp/atom/Atom\ Dev.app/Contents/Resources/app/apm/bin/apm
+      ATOM: /tmp/atom/Atom.app/Contents/Resources/app/atom.sh
+      APM: /tmp/atom/Atom.app/Contents/Resources/app/apm/bin/apm
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
@@ -76,7 +76,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://github.visualstudio.com/Atom/_apis/build/builds/98680/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1131/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
