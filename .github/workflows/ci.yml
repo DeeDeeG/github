@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - Atom-1.54
+    - no-manual-Visual-Studio-install-in-CI
   pull_request:
     types:
     - opened
