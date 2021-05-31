@@ -24,7 +24,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-amd64.deb' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.55.0/atom-amd64.deb' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom-amd64.deb
         #  -o /tmp/atom-amd64.deb.zip
@@ -77,7 +77,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-mac.zip' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.55.0/atom-mac.zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom
@@ -124,7 +124,7 @@ jobs:
       shell: bash
       run: |
         mkdir C:\\tmp
-        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-x64-windows.zip' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.55.0/atom-x64-windows.zip' \
           -H 'Accept: application/octet-stream' \
           -o C:\\tmp\\atom.zip
         unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom
