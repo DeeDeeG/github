@@ -125,8 +125,8 @@ jobs:
         curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-x64-windows.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o C:\\tmp\\atom.zip
-        sudo unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom_intermediate
-        sudo unzip -q C:\\tmp\\atom_intermediate\\atom-x64-windows.zip\\atom-x64-windows.zip -d C:\\tmp\\atom
+        unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom_intermediate
+        unzip -q C:\\tmp\\atom_intermediate\\atom-x64-windows.zip\\atom-x64-windows.zip -d C:\\tmp\\atom
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
