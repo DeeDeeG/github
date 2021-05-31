@@ -24,10 +24,11 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-amd64.deb' \
           -H 'Accept: application/octet-stream' \
-          -o /tmp/atom-amd64.deb.zip
-        unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
+          -o /tmp/atom-amd64.deb
+        #  -o /tmp/atom-amd64.deb.zip
+        # unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
         /sbin/start-stop-daemon --start --quiet \
           --pidfile /tmp/custom_xvfb_99.pid \
           --make-pidfile --background \
@@ -76,11 +77,12 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-mac.zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
-        sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
-        sudo unzip -q /tmp/atom_intermediate/atom-mac.zip/atom-mac.zip -d /tmp/atom
+        sudo unzip -q /tmp/atom.zip -d /tmp/atom
+        # sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
+        # sudo unzip -q /tmp/atom_intermediate/atom-mac.zip/atom-mac.zip -d /tmp/atom
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
@@ -122,11 +124,11 @@ jobs:
       shell: bash
       run: |
         mkdir C:\\tmp
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-x64-windows.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://github.com/atom/atom/releases/download/v1.56.0/atom-x64-windows.zip' \
           -H 'Accept: application/octet-stream' \
           -o C:\\tmp\\atom.zip
-        unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom_intermediate
-        unzip -q C:\\tmp\\atom_intermediate\\atom-x64-windows.zip\\atom-x64-windows.zip -d C:\\tmp\\atom
+        unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom
+        # not needed when downloading a bare zip archive from GitHub.com releases # unzip -q C:\\tmp\\atom_intermediate\\atom-x64-windows.zip\\atom-x64-windows.zip -d C:\\tmp\\atom
     - name: install dependencies
       shell: bash
       run: sh -c "${APM} ci"
