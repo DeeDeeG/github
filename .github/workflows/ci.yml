@@ -24,7 +24,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1133/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom-amd64.deb.zip
         unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
@@ -76,7 +76,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1133/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
@@ -106,6 +106,37 @@ jobs:
           -P "${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER:-}" \
           -B "${SYSTEM_PULLREQUEST_SOURCEBRANCH:-${BUILD_SOURCEBRANCH}}"
       if: success() || failure()
+
+  windows-tests:
+    name: Windows tests
+    runs-on: windows-latest
+    env:
+      ATOM_GITHUB_BABEL_ENV: coverage
+      ATOM: C:\\tmp\\atom\\Atom\ x64\\atom.exe
+      APM: C:\\tmp\\atom\\Atom\ x64\\resources\\app\\apm\\bin\\apm.cmd
+      MOCHA_TIMEOUT: 60000
+      UNTIL_TIMEOUT: 30000
+    steps:
+    - uses: actions/checkout@v1
+    - name: install Atom
+      shell: bash
+      run: |
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-x64-windows.zip&api-version=6.0&%24format=zip' \
+          -H 'Accept: application/octet-stream' \
+          -o C:\\tmp\\atom.zip
+        sudo unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom_intermediate
+        sudo unzip -q C:\\tmp\\atom_intermediate\\atom-x64-windows.zip\\atom-x64-windows.zip -d C:\\tmp\\atom
+    - name: install dependencies
+      shell: bash
+      run: sh -c "${APM} ci"
+    - name: configure git
+      shell: bash
+      run: |
+        git config --global user.name Hubot
+        git config --global user.email hubot@github.com
+    - name: run tests
+      shell: bash
+      run: sh -c "${ATOM} --test test/"
 
   lint:
     name: lint
