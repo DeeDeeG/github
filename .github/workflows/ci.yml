@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-    - test-CI-with-Atom-Dev
+    - Atom-master-old-electron
   pull_request:
     types:
     - opened
@@ -24,7 +24,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1149/artifacts?artifactName=atom-amd64.deb&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom-amd64.deb.zip
         unzip -j /tmp/atom-amd64.deb.zip -d /tmp/
@@ -76,7 +76,7 @@ jobs:
     - name: install Atom
       shell: bash
       run: |
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1149/artifacts?artifactName=atom-mac.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o /tmp/atom.zip
         sudo unzip -q /tmp/atom.zip -d /tmp/atom_intermediate
@@ -122,7 +122,7 @@ jobs:
       shell: bash
       run: |
         mkdir C:\\tmp
-        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1139/artifacts?artifactName=atom-x64-windows.zip&api-version=6.0&%24format=zip' \
+        curl -s -L 'https://dev.azure.com/DeeDeeG/b/_apis/build/builds/1149/artifacts?artifactName=atom-x64-windows.zip&api-version=6.0&%24format=zip' \
           -H 'Accept: application/octet-stream' \
           -o C:\\tmp\\atom.zip
         unzip -q C:\\tmp\\atom.zip -d C:\\tmp\\atom_intermediate
