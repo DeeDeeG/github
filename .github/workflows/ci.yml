@@ -112,8 +112,8 @@ jobs:
     runs-on: windows-latest
     env:
       ATOM_GITHUB_BABEL_ENV: coverage
-      ATOM: C:\\tmp\\atom\\Atom\ x64\\atom.exe
-      APM: C:\\tmp\\atom\\Atom\ x64\\resources\\app\\apm\\bin\\apm.cmd
+      ATOM: C:\\tmp\\atom\\Atom\ Dev\ x64\\atom-dev.exe
+      APM: C:\\tmp\\atom\\Atom\ Dev\ x64\\resources\\app\\apm\\bin\\apm.cmd
       MOCHA_TIMEOUT: 60000
       UNTIL_TIMEOUT: 30000
     steps:
