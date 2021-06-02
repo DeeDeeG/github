@@ -137,6 +137,7 @@ jobs:
         git config --global user.email hubot@github.com
     - name: run tests
       shell: bash
+      continue-on-error: true # due to https://github.com/atom/github/pull/2459#issuecomment-624725972
       run: sh -c "${ATOM} --test test/"
 
   lint:
