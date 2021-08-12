@@ -7,10 +7,6 @@ import {setup, teardown} from './helpers';
 import GitShellOutStrategy from '../../lib/git-shell-out-strategy';
 
 describe('integration: file patches', function() {
-  // NOTE: This test does not pass on VSTS macOS builds.  It will be re-enabled
-  // once the underlying problem is solved.  See atom/github#2617 for details.
-  if (process.env.CI_PROVIDER === 'VSTS') { return; }
-
   let context, wrapper, atomEnv;
   let workspace;
   let commands, workspaceElement;
