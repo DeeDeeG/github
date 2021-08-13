@@ -34,10 +34,18 @@ describe('integration: file patches', function() {
 
   afterEach(async function() {
     // Reset git config
-    process.env.GIT_AUTHOR_NAME = originalGitAuthorName;
-    process.env.GIT_AUTHOR_EMAIL = originalGitAuthorEmail;
-    process.env.GIT_COMMITTER_NAME = originalGitCommitterName;
-    process.env.GIT_COMMITTER_EMAIL = originalGitCommitterEmail;
+    const originalEnvVars = {
+      'GIT_AUTHOR_NAME': originalGitAuthorName,
+      'GIT_AUTHOR_EMAIL': originalGitAuthorEmail,
+      'GIT_COMMITTER_NAME': originalGitCommitterName,
+      'GIT_COMMITTER_EMAIL': originalGitCommitterEmail
+    };
+    for (const envVar in originalEnvVars) {
+      originalEnvVars[envVar] ?
+        process.env[envVar] = originalEnvVars[envVar] :
+        delete process.env[envVar]
+    }
+
 
     if (context) {
       await teardown(context);
