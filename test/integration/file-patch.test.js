@@ -14,6 +14,8 @@ describe('integration: file patches', function() {
   let usesWorkspaceObserver;
   const originalGitAuthorName = process.env.GIT_AUTHOR_NAME;
   const originalGitAuthorEmail = process.env.GIT_AUTHOR_EMAIL;
+  const originalGitCommitterName = process.env.GIT_COMMITTER_NAME;
+  const originalGitCommitterEmail = process.env.GIT_COMMITTER_EMAIL;
 
   this.timeout(Math.max(this.timeout(), 10000));
 
@@ -26,17 +28,16 @@ describe('integration: file patches', function() {
     // Set git config
     process.env.GIT_AUTHOR_NAME = 'Hubot';
     process.env.GIT_AUTHOR_EMAIL = 'hubot@github.com';
+    process.env.GIT_COMMITTER_NAME = 'Hubot';
+    process.env.GIT_COMMITTER_EMAIL = 'hubot@github.com';
   });
 
   afterEach(async function() {
-    // Unset git config
-    originalGitAuthorName ?
-      process.env.GIT_AUTHOR_NAME = originalGitAuthorName :
-      delete process.env.GIT_AUTHOR_NAME;
-
-    originalGitAuthorEmail ?
-      process.env.GIT_AUTHOR_EMAIL = originalGitAuthorEmail :
-      delete process.env.GIT_AUTHOR_EMAIL;
+    // Reset git config
+    process.env.GIT_AUTHOR_NAME = originalGitAuthorName;
+    process.env.GIT_AUTHOR_EMAIL = originalGitAuthorEmail;
+    process.env.GIT_COMMITTER_NAME = originalGitCommitterName;
+    process.env.GIT_COMMITTER_EMAIL = originalGitCommitterEmail;
 
     if (context) {
       await teardown(context);
