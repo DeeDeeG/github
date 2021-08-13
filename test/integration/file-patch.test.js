@@ -12,6 +12,8 @@ describe('integration: file patches', function() {
   let commands, workspaceElement;
   let repoRoot, git;
   let usesWorkspaceObserver;
+  const originalGitAuthorName = process.env.GIT_AUTHOR_NAME;
+  const originalGitAuthorEmail = process.env.GIT_AUTHOR_EMAIL;
 
   this.timeout(Math.max(this.timeout(), 10000));
 
@@ -20,9 +22,22 @@ describe('integration: file patches', function() {
   beforeEach(function() {
     // These tests take a little longer because they rely on real filesystem events and git operations.
     until.setDefaultTimeout(9000);
+
+    // Set git config
+    process.env.GIT_AUTHOR_NAME = 'Hubot';
+    process.env.GIT_AUTHOR_EMAIL = 'hubot@github.com';
   });
 
   afterEach(async function() {
+    // Unset git config
+    originalGitAuthorName ?
+      process.env.GIT_AUTHOR_NAME = originalGitAuthorName :
+      delete process.env.GIT_AUTHOR_NAME;
+
+    originalGitAuthorEmail ?
+      process.env.GIT_AUTHOR_EMAIL = originalGitAuthorEmail :
+      delete process.env.GIT_AUTHOR_EMAIL;
+
     if (context) {
       await teardown(context);
     }
