@@ -107,7 +107,8 @@
     "relay-compiler": "5.0.0",
     "semver": "6.3.0",
     "sinon": "9.0.3",
-    "test-until": "1.1.1"
+    "test-until": "1.1.1",
+    "trim-right": "^2.0.0"
   },
   "consumedServices": {
     "status-bar": {
