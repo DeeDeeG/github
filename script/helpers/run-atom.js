@@ -1,7 +1,7 @@
 const {spawn} = require('child_process');
 
 function atomProcess(env, ...args) {
-  const atomBinPath = process.env.ATOM_SCRIPT_PATH || 'atom';
+  const atomBinPath = process.env.ATOM_SCRIPT_PATH || 'pulsar';
   const atomEnv = {...process.env, ...env};
   const isWindows = process.platform === 'win32';
 
